@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "442e0e56-97a3-4caa-959a-5cbb5f6d5837",
+		"name": "Delta Drive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11446028"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Mica\",\r\n    \"lastName\":\"Mica\",\r\n    \"email\":\"Mica@gmail.com\",\r\n    \"password\":\"Mica\",\r\n     \"birthday\": \"1990-05-15T00:00:00Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/auth/sign-up"
+			},
+			"response": []
+		},
+		{
+			"name": "Sign in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"vlada@gmail.com\",\r\n    \"password\":\"vlada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/auth/sign-in"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all vehicles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2bGFkYUBnbWFpbC5jb20iLCJpYXQiOjE3MDk2NTQyMTAsImV4cCI6MTcxMDI1OTAxMH0.Qz-_sX13v4o1GuhpFYVvwHUShKPsur5IHBV8EeFiSzs"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"email\":\"vlada@gmail.com\",\r\n    \"password\":\"vlada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/vehicle/allVehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "Find closest vehicles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2bGFkYUBnbWFpbC5jb20iLCJpYXQiOjE3MDk2NTQyMTAsImV4cCI6MTcxMDI1OTAxMH0.Qz-_sX13v4o1GuhpFYVvwHUShKPsur5IHBV8EeFiSzs"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"email\":\"vlada@gmail.com\",\r\n    \"password\":\"vlada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/vehicle/closest-vehicles?longitude=19.7999148&latitude=45.29711619&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicle",
+						"closest-vehicles"
+					],
+					"query": [
+						{
+							"key": "longitude",
+							"value": "19.7999148"
+						},
+						{
+							"key": "latitude",
+							"value": "45.29711619"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find closest vehicles NO TOKEN - FORBIDDEN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/vehicle/closest-vehicles?longitude=19.7999148&latitude=45.29711619&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicle",
+						"closest-vehicles"
+					],
+					"query": [
+						{
+							"key": "longitude",
+							"value": "19.7999148"
+						},
+						{
+							"key": "latitude",
+							"value": "45.29711619"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book ride",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2bGFkYUBnbWFpbC5jb20iLCJpYXQiOjE3MDk2NTQyMTAsImV4cCI6MTcxMDI1OTAxMH0.Qz-_sX13v4o1GuhpFYVvwHUShKPsur5IHBV8EeFiSzs"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"vehicleId\":114,\r\n    \"longitudeStart\": 45.123456,\r\n    \"latitudeStart\": 18.654321,\r\n    \"longitudeEnd\": 46.654321,\r\n    \"latitudeEnd\": 19.987654\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/ride/book-ride"
+			},
+			"response": []
+		},
+		{
+			"name": "Randomize accept status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2bGFkYUBnbWFpbC5jb20iLCJpYXQiOjE3MDk2NTQyMTAsImV4cCI6MTcxMDI1OTAxMH0.Qz-_sX13v4o1GuhpFYVvwHUShKPsur5IHBV8EeFiSzs"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/ride/3/randomize-status"
+			},
+			"response": []
+		},
+		{
+			"name": "Ride simulation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2bGFkYUBnbWFpbC5jb20iLCJpYXQiOjE3MDk2NTQyMTAsImV4cCI6MTcxMDI1OTAxMH0.Qz-_sX13v4o1GuhpFYVvwHUShKPsur5IHBV8EeFiSzs"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/ride/3/simulate-ride"
+			},
+			"response": []
+		},
+		{
+			"name": "My rides history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2bGFkYUBnbWFpbC5jb20iLCJpYXQiOjE3MDk2NTQyMTAsImV4cCI6MTcxMDI1OTAxMH0.Qz-_sX13v4o1GuhpFYVvwHUShKPsur5IHBV8EeFiSzs"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/user/my-rides"
+			},
+			"response": []
+		}
+	]
+}
