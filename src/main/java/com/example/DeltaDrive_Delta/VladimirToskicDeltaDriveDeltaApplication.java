@@ -35,10 +35,6 @@ public class VladimirToskicDeltaDriveDeltaApplication implements CommandLineRunn
 			userRepository.saveAndFlush(user);
 		}
 
-//		List<Vehicle> vehicles = vehicleRepository.findAll();
-//		for(Vehicle v : vehicles){
-//			System.out.println(v.getBrand()+" je brand"+ v.getDriverFirstName()+" je vozac");
-//		}
 
 	}
 }
